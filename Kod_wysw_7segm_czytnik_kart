@@ -1,0 +1,136 @@
+/*
+ * GccApplication7.c
+ *
+ * Created: 05.11.2025 13:15:16
+ * Author : Wiktor, Monika, Mikołaj
+ */ 
+
+#include <avr/io.h>
+#include <util/delay.h>
+
+int alfabet(char znak)
+{
+	int kod;
+	switch (znak)
+	{
+		case '1':
+		kod = 0b11111001;
+		break;
+		case '2':
+		kod = 0b10100100;
+		break;
+		case '3':
+		kod = 0b10110000;
+		break;
+		case '4':
+		kod = 0b10011001;
+		break;
+		case '5':
+		kod = 0b10010010;
+		break;
+		case '6':
+		kod = 0b10000010;
+		break;
+		case '7':
+		kod = 0b11111000;
+		break;
+		case '8':
+		kod = 0b10000000;
+		break;
+		case '9':
+		kod = 0b10010000;
+		break;
+		case '0':
+		kod = 0b11000000;
+		break;
+		
+		case 'A': case 'a': 
+		kod = 0b10001000; 
+		break;
+		case 'B': case 'b':
+		 kod = 0b10000011; 
+		 break;
+		case 'C': case 'c':
+		 kod = 0b11000110; 
+		 break;
+		case 'D': case 'd': 
+		kod = 0b10100001; 
+		break;
+		case 'E': case 'e': 
+		kod = 0b10000110; 
+		break;
+		case 'F': case 'f': 
+		kod = 0b10001110; 
+		break;
+		case 'G': case 'g': 
+		kod = 0b11000010; 
+		break;
+		case 'H': case 'h': 
+		kod = 0b10001001; 
+		break;
+		case 'I': case 'i': 
+		kod = 0b11001111; 
+		break;
+		case 'J': case 'j': 
+		kod = 0b11100001; 
+		break;
+		case 'L': case 'l': 
+		kod = 0b11000111; 
+		break;
+		case 'N': case 'n': 
+		kod = 0b10101011; 
+		break;
+		case 'O': case 'o': 
+		kod = 0b10100011; 
+		break;
+		case 'P': case 'p': 
+		kod = 0b10001100; 
+		break;
+		case 'Q': case 'q': 
+		kod = 0b10011000; 
+		break;
+		case 'R': case 'r': 
+		kod = 0b10101111; 
+		break;
+		case 'S': case 's': 
+		kod = 0b10010010; 
+		break;
+		case 'T': case 't':
+		 kod = 0b10000111; 
+		 break;
+		case 'U': case 'u': 
+		kod = 0b11000001; 
+		break;
+		case 'Y': case 'y': 
+		kod = 0b10010001; 
+		break;
+		
+		default:
+		kod = 0xFF;
+		break; // nic się nie dzieje
+	}
+	return kod;
+}
+
+void display(int kod,int index)
+{
+	PORTC = index;
+	PORTD = kod;
+	_delay_us(1000); 
+}
+
+
+int main(void)
+{
+	
+	DDRD = 0xFF;
+	DDRC = 0xFF;
+    /* Replace with your application code */
+    while (1) 
+    {
+		display(alfabet('c'),0b11111110);
+		display(alfabet('h'),0b11111101);
+		display(alfabet('u'),0b11111011);
+		display(alfabet('j'),0b11110111);
+    }
+}
