@@ -14,8 +14,8 @@ uint8_t ds18b20_read_temp(int16_t *temp)
 	onewire_writebyte(CMD_SKIP_ROM);
 	onewire_writebyte(CMD_CONVERT_T);
 
-	// DS18B20 potrzebuje do 750ms
-	_delay_ms(750);
+	// DS18B20 potrzebuje do 750ms ???????????????
+	_delay_ms(5);
 
 	if(!onewire_reset())
 	return 0;
